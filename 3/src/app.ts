@@ -1,0 +1,6 @@
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import {authenticate} from './middlewares/auth'
+import { getUserData, uploadData } from './controllers/dataController'
+import './utils/db'
