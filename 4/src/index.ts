@@ -6,6 +6,7 @@ import { connect } from 'http2'
 import morgan from 'morgan'
 import connectDB from './config/db'
 
+
 dotenv.config()
 connectDB()
 
