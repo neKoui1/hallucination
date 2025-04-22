@@ -2,7 +2,6 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import express, {Application, Request, Response} from 'express'
 import helmet from 'helmet'
-import { connect } from 'http2'
 import morgan from 'morgan'
 import connectDB from './config/db'
 
@@ -33,4 +32,4 @@ app.get(
     }
 )
 
-app.use('/api', routes)
+

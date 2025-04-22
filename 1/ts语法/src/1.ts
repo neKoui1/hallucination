@@ -1,6 +1,7 @@
-let str1: string = '123'
-let str2: String
+const src = [1, 2, 3]
+const dst = [0]
+src.forEach((el) => {
+    dst.push(el)
+})
 
-str2 = '123'
-str2 = new String('2233')
-console.log(str2.valueOf())
+console.log(dst)
