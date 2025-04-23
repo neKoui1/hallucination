@@ -1,7 +1,19 @@
-const src = [1, 2, 3]
-const dst = [0]
-src.forEach((el) => {
-    dst.push(el)
-})
+interface IPerson<T> {
+    name: string,
+    age: number,
+    extraInfo: T,
+}
 
-console.log(dst)
+type JobInfo = {
+    title: string,
+    company: string,
+}
+
+let p: IPerson<JobInfo> = {
+    name: '123',
+    age: 10,
+    extraInfo: {
+        title: '123',
+        company: '123'
+    },
+}
