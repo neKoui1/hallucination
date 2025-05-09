@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="html 快速入门" />
+    <meta name="keywords" content="hduoaiehuo" />
+    <title>html 快速入门</title>
+    <link rel="icon" href="./images/icon.png" />
+  </head>
+
+  <body>
+    <!-- html的注释 -->
+    <span><mark>hello</mark></span>
+    <div><strong>world</strong></div>
+    <img src="./images/icon.png" alt="icon" height="200" />
+    <img src="./images/icon.png" alt="icon" height="200" />
+    <img src="./images/icon.png" alt="icon" height="200" />
+
+    <h2>Audios</h2>
+    <audio controls>
+      <source src="./audios/sound1.mp3" type="audio/mpeg" />
+      <source src="./audios/sound2.mp3" type="audio/mpeg" />
+    </audio>
+
+    <h2>Videos</h2>
+    <video controls width="300">
+      <source src="./videos/video1.mp4" type="video/mp4" />
+      <source src="./videos/video2.mp4" type="video/mp4" />
+    </video>
+
+    <h2>超链接</h2>
+    <a href="https://github.com/neKoui1" target="_blank">MyGithub</a>
+    <a href="https://github.com/neKoui1" target="_blank">
+      <img src="./images/icon.png" alt="超链接" height="200" />
+    </a>
+
+    <h2>Form</h2>
+    <form>
+      <label for="username">用户名</label>
+      <input
+        type="text"
+        name="username"
+        manlength="10"
+        minlength="3"
+        id="username"
+        placeholder="username"
+      />
+
+      <br />
+      <label for="age">年龄</label>
+      <input required type="number" name="age" id="age" placeholder="age" />
+
+      <br />
+      <label for="email">邮箱</label>
+      <input type="email" name="email" id="email" />
+
+      <br />
+      <label for="password">密码</label>
+      <input type="password" name="password" id="password" />
+
+      <br />
+      <label for="lang">cpp</label>
+      <input type="radio" name="lang" value="cpp" id="cpp" />
+      <label for="java">java</label>
+      <input type="radio" name="lang" value="java" id="java" />
+      <label for="lang">python</label>
+      <input type="radio" name="lang" value="python" id="python" />
+
+      <br />
+      <label for="resume">用户名</label>
+      <textarea name="resume" id="resume" rows="10" cols="30"> </textarea>
+
+      <br />
+      <label for="language">语言</label>
+      <select name="language" id="language">
+        <option value="">请选择</option>
+        <option selected value="cpp">cpp</option>
+        <option value="java">java</option>
+        <option value="python">python</option>
+      </select>
+
+      <br />
+      <button type="submit">提交</button>
+    </form>
+  </body>
+</html>
