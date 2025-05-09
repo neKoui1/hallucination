@@ -5,5 +5,12 @@
 
 ## 2025
 
+### 业务相关
 * [Serveless框架，Typescript常用语法](https://github.com/neKoui1/hallucination/blob/main/1/1.md#serveless%E6%A1%86%E6%9E%B6)
 * [dynamodb学习](https://github.com/neKoui1/hallucination/blob/main/2/2.md#dynamodb%E5%AD%A6%E4%B9%A0)
+
+### Web前端
+* [html快速入门](https://github.com/neKoui1/hallucination/blob/main/5/5.md#html%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8)
+
+### 数据结构和算法
+* 
