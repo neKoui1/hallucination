@@ -212,3 +212,61 @@ func main() {
 }
 ```
 
+时间复杂度`O(nlogn)`
+
+空间复杂度`O(logn)`
+
+## 2. Merge Sort
+
+和快排不同
+
+`Merge Sort`使用的是先递归后排序的策略，理解起来比较简单
+
+```go
+package main
+
+import "fmt"
+
+func MergeSort(nums []int) []int {
+	if len(nums) <= 1 {
+		return nums
+	}
+	mid := len(nums) / 2
+
+	left := MergeSort(nums[:mid])
+	right := MergeSort(nums[mid:])
+	return Merge(left, right)
+}
+
+func Merge(left, right []int) []int {
+	result := make([]int, 0, len(left)+len(right))
+	i, j := 0, 0
+	for i < len(left) && j < len(right) {
+		if left[i] <= right[j] {
+			result = append(result, left[i])
+			i++
+		} else {
+			result = append(result, right[j])
+			j++
+		}
+	}
+	result = append(result, left[i:]...)
+	result = append(result, right[j:]...)
+	return result
+}
+
+func main() {
+	arr := []int{38, 27, 43, 3, 9, 82, 10}
+	sorted := MergeSort(arr)
+	fmt.Println(sorted) // 输出 [3 9 10 27 38 43 82]
+}
+```
+
+但是在cpp里面没有直接append数组的函数，因此需要从下标中动手
+
+
+
+时间复杂度`O(nlogn)`
+
+空间复杂度`O(n)`
+

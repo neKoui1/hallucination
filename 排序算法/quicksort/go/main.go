@@ -39,10 +39,13 @@ func QuickSort(nums []int) {
 	if len(nums) <= 1 {
 		return
 	}
+
+	fmt.Println("nums = ", nums)
 	pivot := SelectPivot(nums)
 	left, right := Partition(nums, pivot)
-	fmt.Println("pivot = ", pivot)
+
 	fmt.Println("nums = ", nums)
+	fmt.Println("pivot = ", pivot)
 	fmt.Printf("left = %d, right = %d\n", left, right)
 	QuickSort(nums[:left+1])
 	QuickSort(nums[right:])
