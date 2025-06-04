@@ -270,3 +270,131 @@ func main() {
 
 空间复杂度`O(n)`
 
+## 3. Bubble Sort
+
+唯一真神
+
+```go
+package main
+
+import "fmt"
+
+func BubbleSort(nums []int) {
+	n := len(nums)
+	if n <= 1 {
+		return
+	}
+	for i := 0; i < n-1; i++ {
+		for j := 0; j < n-1-i; j++ {
+			if nums[j] > nums[j+1] {
+				nums[j], nums[j+1] = nums[j+1], nums[j]
+			}
+		}
+	}
+}
+
+func main() {
+	arr := []int{3, 1, 4, 1, 5, 9, 2, 6}
+	BubbleSort(arr)
+	fmt.Println(arr)
+}
+```
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void BubbleSort(vector<int>& nums) {
+    int n = nums.size();
+    for(int i = 0; i < n-1; i++) {
+        for(int j = 0; j < n-i-1; j++) {
+            if (nums[j] > nums[j+1]) {
+                swap(nums[j], nums[j+1]);
+            }
+        }
+    }
+}
+
+int main () {
+    vector<int> nums = {3, 45, 2, 5, 7, 21, 30};
+    BubbleSort(nums);
+    for(auto val : nums) {
+        cout << val << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+## 4. Insertion Sort
+
+插入排序：类比发牌时到手上的切换排序。假设从左往右遍历，左边的序列都是排好序的，所以每遍历到下一位的元素就需要从后往前进行比较并移动数据，一直判断到比当前比较的数大为止
+
+使用`bool`函数来作为数组中元素大小的判断
+
+```go
+package main
+
+import "fmt"
+
+func Less(nums []int, a int, b int) bool {
+	if nums[a] < nums[b] {
+		return true
+	}
+	return false
+}
+
+func InsertionSort(nums []int) {
+	for i := 1; i < len(nums); i++ {
+		for j := i; j > 0 && Less(nums, j, j-1); j-- {
+			nums[j], nums[j-1] = nums[j-1], nums[j]
+		}
+	}
+}
+
+// 0 1 2 3 4 5 6
+//-1 0 1 3 5 2 8
+func main() {
+	arr := []int{3, 1, 4, 1, 5, 9, 2, 6}
+	InsertionSort(arr)
+	fmt.Println(arr)
+}
+```
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+
+bool Less(vector<int>& nums, int i, int j) {
+    if(nums[i] < nums[j]) return true;
+    return false;
+}
+
+void InsertionSort(vector<int>& nums) {
+    for(int i = 1; i < nums.size();i++) {
+        for (int j = i; j > 0 && Less(nums, j, j-1); j--) {
+            swap(nums[j], nums[j-1]);
+        }
+    }
+}
+
+int main() {
+    vector<int> nums = {3, 1, 4, 1, 5, 9, 2, 6};
+    InsertionSort(nums);
+    for (int i = 0; i < nums.size();i++) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    // i 是 nums的value
+    for (auto i : nums) {
+        cout << i << " ";
+    }
+}
+```
+
+## 5. Shell Sort
+
+
+
