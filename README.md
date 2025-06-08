@@ -18,5 +18,6 @@
     * [Merge Sort](https://github.com/neKoui1/hallucination/tree/main/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#2-merge-sort)
     * [Bubble Sort](https://github.com/neKoui1/hallucination/tree/main/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#3-bubble-sort)
     * [Insertion Sort](https://github.com/neKoui1/hallucination/tree/main/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#4-insertion-sort)
+    * [Shell Sort](https://github.com/neKoui1/hallucination/tree/main/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#5-shell-sort)
  
 * 
