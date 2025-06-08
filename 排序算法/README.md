@@ -396,5 +396,78 @@ int main() {
 
 ## 5. Shell Sort
 
+`Insertion Sort`是一种特殊的`Shell Sort`
+
+类似插入排序，希尔排序每次都选择一个增量为`h`的子数组进行排列，从而减少一定量的比较和交换次数
+
+确立循环条件为`j>=h`，确保数组不会越界和一定有一个前驱数组进行比较
+
+使用`Knuth序列`的平均算法时间复杂度为O(N<sup>5/3</sup>)
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void ShellSort(vector<int>& nums) {
+    int N = nums.size();
+    int h = 1;
+    while(h<N/3) h = 3*h+1;
+    while(h>=1) {
+        for(int i = h; i < N; i++) {
+            for (int j = i; j >= h & nums[j] < nums[j-h]; j-=h) {
+                swap(nums[j], nums[j-h]);
+            }
+        }
+        h/=3;
+    }
+}
+
+int main() {
+    vector<int> nums = {3, 1, 4, 1, 5, 9, 2, 6};
+    ShellSort(nums);
+    for (auto val : nums) {
+        cout << val << " ";
+    }
+}
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func ShellSort(nums []int) {
+	n := len(nums)
+	h := 1
+	for h < n/3 {
+		h = 3*h + 1
+	}
+	for h >= 1 {
+		for i := h; i < n; i++ {
+			for j := i; j >= h && nums[j] < nums[j-h]; j -= h {
+				nums[j], nums[j-h] = nums[j-h], nums[j]
+			}
+		}
+		h /= 3
+	}
+}
+
+func main() {
+	nums := []int{3, 1, 4, 1, 5, 9, 2, 6, 100, 98, 106, 356, 27, 29}
+	startTime := time.Now()
+	for i := 0; i < 100000; i++ {
+		ShellSort(nums)
+	}
+	duration := time.Since(startTime)
+	fmt.Println(nums)
+	fmt.Printf("time = %d ns\n", duration.Nanoseconds()/100000)
+}
+
+```
+
 
 

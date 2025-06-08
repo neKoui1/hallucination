@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func SelectPivot(nums []int) int {
 	n := len(nums)
@@ -53,6 +56,10 @@ func QuickSort(nums []int) {
 
 func main() {
 	arr := []int{3, 1, 4, 1, 5, 9, 2, 6}
+	startTime := time.Now()
 	QuickSort(arr)
+	duration := time.Since(startTime)
+
 	fmt.Println(arr)
+	fmt.Printf("quick sort time = %d ns \n", duration.Nanoseconds())
 }
