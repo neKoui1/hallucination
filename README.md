@@ -5,6 +5,10 @@
 
 ## 2025
 
+### NOTES
+
+* [Websocket原理](https://github.com/neKoui1/GOIM?tab=readme-ov-file#websocket%E5%8E%9F%E7%90%86)
+
 ### 业务相关
 * [Serveless框架，Typescript常用语法](https://github.com/neKoui1/hallucination/blob/main/1/1.md#serveless%E6%A1%86%E6%9E%B6)
 * [dynamodb学习](https://github.com/neKoui1/hallucination/blob/main/2/2.md#dynamodb%E5%AD%A6%E4%B9%A0)
@@ -19,5 +23,5 @@
     * [Bubble Sort](https://github.com/neKoui1/hallucination/tree/main/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#3-bubble-sort)
     * [Insertion Sort](https://github.com/neKoui1/hallucination/tree/main/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#4-insertion-sort)
     * [Shell Sort](https://github.com/neKoui1/hallucination/tree/main/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#5-shell-sort)
- 
+
 * 
