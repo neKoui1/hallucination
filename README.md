@@ -8,6 +8,7 @@
 ### NOTES
 
 * [Websocket原理](https://github.com/neKoui1/GOIM?tab=readme-ov-file#websocket%E5%8E%9F%E7%90%86)
+* [Mongodb工作原理](https://github.com/neKoui1/GOIM?tab=readme-ov-file#mongodb%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86)
 
 ### 业务相关
 * [Serveless框架，Typescript常用语法](https://github.com/neKoui1/hallucination/blob/main/1/1.md#serveless%E6%A1%86%E6%9E%B6)
