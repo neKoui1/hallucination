@@ -480,3 +480,74 @@ export default App;
 
 ![image-20250615200459044](https://cdn.jsdelivr.net/gh/neKoui1/picgo_images/img/20250615200459099.png)
 
+## 组件通信
+
+父传子
+
+![image-20250701153657202](https://cdn.jsdelivr.net/gh/neKoui1/picgo_images/img/20250701153657542.png)
+
+```tsx
+// 父传子
+// 1. 父组件传递数据，子组件标签绑定属性
+// 2. 子组件接收数据 props参数
+interface SonProps {
+  name: string;
+  age?: number
+}
+
+function Son(props: SonProps) {
+  console.log(props)
+  return <div>{props.name} this is son {props.age? props.age : "10"}</div>
+}
+// App -> index.tsx -> public/index.html(root)
+function App() {
+  const name = 'this is app name'
+  return (
+    <div className="App">
+      <Son name={name} age={20}></Son>
+    </div>
+  );
+}
+
+export default App;
+```
+
+1. `props`本质是对象
+2. 即使只传递一个属性也是对象
+3. 如果`props`类型是`any`：允许任意访问，但不安
+4. 子组件只能读取`props`中的数据，不能直接进行修改
+5. **父组件的数据只能由父组件修改**
+
+特殊的`prop` `children`
+
+当我们把内容嵌套在子组件标签中时，父组件会自动在名为`children`的`prop`属性中接收该内容
+
+```tsx
+// 父传子
+// 1. 父组件传递数据，子组件标签绑定属性
+// 2. 子组件接收数据 props参数
+interface SonProps {
+  name: string;
+  age?: number;
+  children: React.ReactNode
+}
+
+function Son(props: SonProps) {
+  console.log(props)
+  return <div>{props.name} this is son {props.age? props.age : "10"}<br/> {props.children}</div>
+}
+// App -> index.tsx -> public/index.html(root)
+function App() {
+  const name = 'this is app name'
+  return (
+    <div className="App">
+      <Son name={name} age={20}>
+        <span>this is span</span>
+      </Son>
+    </div>
+  );
+}
+
+export default App;
+```
+
