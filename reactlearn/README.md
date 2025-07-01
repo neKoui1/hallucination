@@ -482,7 +482,7 @@ export default App;
 
 ## 组件通信
 
-父传子
+### 父传子
 
 ![image-20250701153657202](https://cdn.jsdelivr.net/gh/neKoui1/picgo_images/img/20250701153657542.png)
 
@@ -544,6 +544,97 @@ function App() {
       <Son name={name} age={20}>
         <span>this is span</span>
       </Son>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### 子传父
+
+![image-20250701174656396](https://cdn.jsdelivr.net/gh/neKoui1/picgo_images/img/20250701174703606.png)
+
+在子组件中调用父组件的函数并传递参数
+
+```tsx
+// 子传父
+// 在子组件中调用父组件中的函数并传递实参
+
+import { useState } from "react";
+
+function Son({ onGetSonMsg }: { onGetSonMsg: (msg: string) => void }) {
+  // Son组件中的数据
+  const sonMsg = "this is son msg";
+  return (
+    <div>
+      this is Son
+      <button onClick={() => onGetSonMsg(sonMsg)}>sendMsg</button>
+    </div>
+  );
+}
+
+// App -> index.tsx -> public/index.html(root)
+function App() {
+  const [msg, setMsg] = useState("");
+  const getMsg = (msg: string) => {
+    console.log(msg);
+    setMsg(msg);
+  };
+  return (
+    <div className="App">
+      <div>
+        this is app, {msg}
+        <Son onGetSonMsg={getMsg} />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### 使用状态提升实现兄弟组件通信
+
+通过父组件进行兄弟组件之间的数据传递
+
+```tsx
+// 1. 子传父 A -> App
+// 2. 父传子 App -> B
+
+import { ReactNode, useState } from "react";
+
+function A({ onGetAName }: { onGetAName: (name: string) => void }) {
+  const name = "name";
+  return (
+    <div>
+      this is A component,
+      <button onClick={() => onGetAName(name)}>send</button>
+    </div>
+  );
+}
+
+function B({ name }: { name: string }) {
+  return (
+    <div>
+      this is B component,
+      {name}
+    </div>
+  );
+}
+
+// App -> index.tsx -> public/index.html(root)
+function App() {
+  const [name, setName] = useState("");
+  const getAName = (name: string) => {
+    console.log(name);
+    setName(name);
+  };
+  return (
+    <div className="App">
+      this is App
+      <A onGetAName={getAName} />
+      <B name={name} />
     </div>
   );
 }

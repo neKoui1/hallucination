@@ -1,24 +1,39 @@
-// 父传子
-// 1. 父组件传递数据，子组件标签绑定属性
-// 2. 子组件接收数据 props参数
-interface SonProps {
-  name: string;
-  age?: number;
-  children: React.ReactNode
+// 1. 子传父 A -> App
+// 2. 父传子 App -> B
+
+import { ReactNode, useState } from "react";
+
+function A({ onGetAName }: { onGetAName: (name: string) => void }) {
+  const name = "name";
+  return (
+    <div>
+      this is A component,
+      <button onClick={() => onGetAName(name)}>send</button>
+    </div>
+  );
 }
 
-function Son(props: SonProps) {
-  console.log(props)
-  return <div>{props.name} this is son {props.age? props.age : "10"}<br/> {props.children}</div>
+function B({ name }: { name: string }) {
+  return (
+    <div>
+      this is B component,
+      {name}
+    </div>
+  );
 }
+
 // App -> index.tsx -> public/index.html(root)
 function App() {
-  const name = 'this is app name'
+  const [name, setName] = useState("");
+  const getAName = (name: string) => {
+    console.log(name);
+    setName(name);
+  };
   return (
     <div className="App">
-      <Son name={name} age={20}>
-        <span>this is span</span>
-      </Son>
+      this is App
+      <A onGetAName={getAName} />
+      <B name={name} />
     </div>
   );
 }
