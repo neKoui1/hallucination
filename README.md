@@ -9,6 +9,8 @@
 
 * [Websocket原理](https://github.com/neKoui1/GOIM?tab=readme-ov-file#websocket%E5%8E%9F%E7%90%86)
 * [Mongodb工作原理](https://github.com/neKoui1/GOIM?tab=readme-ov-file#mongodb%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86)
+* [IM系统的数据库技术选型](https://github.com/neKoui1/GOIM?tab=readme-ov-file#im%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B)
+* [`gRPC`学习](https://github.com/neKoui1/GOIM?tab=readme-ov-file#grpc%E5%AD%A6%E4%B9%A0)
 
 ### 业务相关
 * [Serveless框架，Typescript常用语法](https://github.com/neKoui1/hallucination/blob/main/1/1.md#serveless%E6%A1%86%E6%9E%B6)
@@ -16,6 +18,7 @@
 
 ### Web前端
 * [html快速入门](https://github.com/neKoui1/hallucination/blob/main/5/5.md#html%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8)
+* [【一周目】react学习](https://github.com/neKoui1/hallucination/tree/main/reactlearn#react%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0)
 
 ### 数据结构和算法
 * 排序算法
