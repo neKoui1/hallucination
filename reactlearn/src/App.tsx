@@ -1,41 +1,37 @@
-// 1. 子传父 A -> App
-// 2. 父传子 App -> B
+import { useEffect, useState } from "react";
 
-import { ReactNode, useState } from "react";
-
-function A({ onGetAName }: { onGetAName: (name: string) => void }) {
-  const name = "name";
-  return (
-    <div>
-      this is A component,
-      <button onClick={() => onGetAName(name)}>send</button>
-    </div>
-  );
+interface Channel {
+  id: number;
+  name: string;
 }
 
-function B({ name }: { name: string }) {
-  return (
-    <div>
-      this is B component,
-      {name}
-    </div>
-  );
-}
+const url = "http://geek.itheima.net/v1_0/channels"
 
 // App -> index.tsx -> public/index.html(root)
 function App() {
-  const [name, setName] = useState("");
-  const getAName = (name: string) => {
-    console.log(name);
-    setName(name);
-  };
+  // 创建一个状态数据
+  const [list, setList] = useState<Channel[]>([])
+  useEffect(()=>{
+    // 获取频道列表
+    async function getList() {
+      const res = await fetch(url)
+      const jsonRes = await res.json()
+      // console.log(jsonRes)
+      // console.log(typeof jsonRes)
+      // console.log(jsonRes['data']['channels'])
+      setList(jsonRes.data.channels)
+      console.log(list)
+    }
+    getList()
+  }, [])
   return (
-    <div className="App">
-      this is App
-      <A onGetAName={getAName} />
-      <B name={name} />
+    <div>
+      this is app
+      <ul>
+        {list.map(item=><li key={item.id}>{item.name}</li>)}
+      </ul>
     </div>
-  );
+  )
 }
 
 export default App;

@@ -642,3 +642,107 @@ function App() {
 export default App;
 ```
 
+## 使用context机制跨层级组件通信
+
+1. 使用`createContext`方法创建一个上下文对象`ctx`
+2. 在顶层级组件中通过`ctx.Provider`组件提供数据
+3. 在底层组件中通过`useContext`钩子函数获取使用数据
+
+```tsx
+// App -> A -> B
+
+import { createContext, useContext } from "react"
+
+/**
+ * 1. createContext创建上下文对象
+ * 2. 在顶层组件通过Provider提供数据
+ * 3. 在底层组件通过useContext钩子函数使用数据
+ */
+const msgCtx = createContext("")
+
+function A() {
+  return (
+    <div>
+      this is A component
+      <B />
+    </div>
+  )
+}
+
+function B() {
+  const msg = useContext(msgCtx)
+  return (
+    <div>
+      this is B component, {msg as string}
+    </div>
+  )
+}
+
+// App -> index.tsx -> public/index.html(root)
+function App() {
+  const msg = 'this is app msg'
+  return (
+    <div>
+      <msgCtx.Provider value={msg}>
+      this is app
+      <A />
+      </msgCtx.Provider>
+
+    </div>
+  )
+}
+
+export default App;
+```
+
+![image-20250710181546410](https://cdn.jsdelivr.net/gh/neKoui1/picgo_images/img/20250710181553471.png)
+
+## `useEffect`
+
+创建由渲染本身引起的操作
+
+如发送ajax请求、修改DOM等
+
+```tsx
+import { useEffect, useState } from "react";
+
+interface Channel {
+  id: number;
+  name: string;
+}
+
+const url = "http://geek.itheima.net/v1_0/channels"
+
+// App -> index.tsx -> public/index.html(root)
+function App() {
+  // 创建一个状态数据
+  const [list, setList] = useState<Channel[]>([])
+  useEffect(()=>{
+    // 获取频道列表
+    async function getList() {
+      const res = await fetch(url)
+      const jsonRes = await res.json()
+      // console.log(jsonRes)
+      // console.log(typeof jsonRes)
+      // console.log(jsonRes['data']['channels'])
+      setList(jsonRes.data.channels)
+      console.log(list)
+    }
+    getList()
+  }, [])
+  return (
+    <div>
+      this is app
+      <ul>
+        {list.map(item=><li key={item.id}>{item.name}</li>)}
+      </ul>
+    </div>
+  )
+}
+
+export default App;
+
+```
+
+![image-20250710184414820](https://cdn.jsdelivr.net/gh/neKoui1/picgo_images/img/20250710184414891.png)
+
