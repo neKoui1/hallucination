@@ -120,3 +120,100 @@ deferFunc =  2
 ```
 
 ![](assets/2025-09-01-10-10-03-image.png)
+
+## 5. defer和panic的执行顺序
+
+**当panic发生时，会先执行所有已经注册的defer语句，之后才会终止程序或者向上传播panic**
+
+1. **panic触发**：执行panic()时程序不会立即终止，而是进入异常处理阶段
+
+2. **执行defer**：按照*LIFO*顺序执行当前函数中所有已经注册的defer语句（panic发生之前声明的defer）
+
+3. **panic传播**：在当前函数中的所有defer执行完毕后，panic会向上传播到调用栈的上一层函数，重复以上步骤，在栈顶处程序崩溃
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	defer fmt.Println("defer 1")
+	defer fmt.Println("defer 2")
+	panic("触发异常")
+	defer fmt.Println("defer 3")
+}
+```
+
+*Output*
+
+```shell
+defer 2
+defer 1
+panic: 触发异常
+
+goroutine 1 [running]:
+main.main()
+	d:/项目/hallucination/go/defer/main.go:8 +0x8b
+exit status 2
+```
+
+![](assets/2025-09-01-11-00-23-image.png) 
+
+## 6. defer中包含panic
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	defer func() {
+		fmt.Println("defer 1")
+		if err := recover(); err != nil {
+			fmt.Println("err: ", err)
+		}
+	}()
+	defer func() {
+		fmt.Println("defer 2")
+	}()
+	panic("触发异常")
+	defer func() {
+		fmt.Println("defer 3")
+	}()
+}
+
+```
+
+*Output*
+
+```shell
+defer 2
+defer 1
+err:  触发异常
+```
+
+![](assets/2025-09-01-11-03-53-image.png)
+
+## 7. defer和os.Exit
+
+```go
+package main
+​
+import (
+  "fmt"
+  "os"
+)
+​
+func test1() {
+  fmt.Println("test")
+}
+​
+func main() {
+  fmt.Println("main start")
+  defer test1()
+  fmt.Println("main end")
+  os.Exit(0)
+}
+```
+
+函数因为执行了os.Exit退出，程序立即终止，被defer的函数调用不会执行

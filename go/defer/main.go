@@ -2,17 +2,18 @@ package main
 
 import "fmt"
 
-func deferFunc() (i int) {
-	defer func() {
-		i++
-		fmt.Println("defer func1 i = ", i)
-	}()
-	defer func() {
-		i++
-		fmt.Println("defer func2 i = ", i)
-	}()
-	return i
-}
 func main() {
-	fmt.Println("deferFunc = ", deferFunc())
+	defer func() {
+		fmt.Println("defer 1")
+		if err := recover(); err != nil {
+			fmt.Println("err: ", err)
+		}
+	}()
+	defer func() {
+		fmt.Println("defer 2")
+	}()
+	panic("触发异常")
+	defer func() {
+		fmt.Println("defer 3")
+	}()
 }
