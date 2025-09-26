@@ -22,7 +22,7 @@
 
 * [defer和return的执行顺序](https://github.com/neKoui1/hallucination/blob/main/go/defer/defer.md#defer%E5%92%8Creturn%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F)
 
-* [unique和uniqueIndex的区别]([hallucination/go/gorm/gorm.md at main · neKoui1/hallucination · GitHub](https://github.com/neKoui1/hallucination/blob/main/go/gorm/gorm.md#unique%E5%92%8Cuniqueindex%E7%9A%84%E5%8C%BA%E5%88%AB))
+* [unique和uniqueIndex的区别](https://github.com/neKoui1/hallucination/blob/main/go/gorm/gorm.md#unique%E5%92%8Cuniqueindex%E7%9A%84%E5%8C%BA%E5%88%AB)
 
 ### Web前端
 
