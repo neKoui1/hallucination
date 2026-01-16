@@ -17,4 +17,5 @@ func main() {
 	fmt.Println(v2)
 	fmt.Println(unsafe.Pointer(&x))
 	fmt.Printf("%d\n", *(*int)(v2.Data))
+
 }

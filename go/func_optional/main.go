@@ -51,6 +51,7 @@ func LoggerMiddleware(logger *zap.Logger) gin.HandlerFunc {
 		path := c.Request.URL.Path
 		query := c.Request.URL.RawQuery
 		method := c.Request.Method
+		source := c.HandlerName()
 		ip := c.ClientIP()
 		userAgent := c.Request.UserAgent()
 
@@ -62,7 +63,7 @@ func LoggerMiddleware(logger *zap.Logger) gin.HandlerFunc {
 		if statusCode >= 400 {
 			logger.Error("Http Request Error",
 				zap.String("method", method),
-				zap.String("source", c.HandlerName()),
+				zap.String("source", source),
 				zap.String("path", path),
 				zap.Int("status", statusCode),
 				zap.Duration("latency", latency),
